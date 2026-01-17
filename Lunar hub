@@ -1,0 +1,57 @@
+-- Carrega a Biblioteca (A "alma" do menu)
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+-- Cria a Janela Principal
+local Window = OrionLib:MakeWindow({
+    Name = "Lunar Hub 🌙", 
+    HidePremium = false, 
+    SaveConfig = true, 
+    ConfigFolder = "LunarConfig"
+})
+
+-- ABA 1: Teleportes
+local TeleportTab = Window:MakeTab({
+    Name = "Teleportes",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Função de Teleporte
+local function tp(x, y, z)
+    local char = game.Players.LocalPlayer.Character
+    if char and char:FindFirstChild("HumanoidRootPart") then
+        char.HumanoidRootPart.CFrame = CFrame.new(x, y, z)
+    end
+end
+
+-- Botões de Teleporte
+TeleportTab:AddButton({
+    Name = "Banco (Cofre)",
+    Callback = function()
+        tp(167, 14, 38)
+    end    
+})
+
+TeleportTab:AddButton({
+    Name = "Base Secreta (Lago)",
+    Callback = function()
+        tp(605, 4, -450)
+    end    
+})
+
+TeleportTab:AddButton({
+    Name = "Agência Secreta",
+    Callback = function()
+        tp(-70, 15, -160)
+    end    
+})
+
+TeleportTab:AddButton({
+    Name = "Limpar Personagem (Spawn)",
+    Callback = function()
+        tp(-4, 20, 10)
+    end    
+})
+
+-- Finaliza e abre o Menu
+OrionLib:Init()
